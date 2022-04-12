@@ -35,6 +35,10 @@ class _TransactionPageState extends State<JobPage> {
           },
         ),
         floatingActionButton: FloatingActionButton(
+          // ignore: prefer_const_constructors
+          backgroundColor: Color.fromARGB(255, 0, 0, 255),
+          foregroundColor: Color.fromARGB(255, 0, 255, 0),
+          
           child: const Icon(Icons.add),
           onPressed: () => showDialog(
             context: context,
@@ -49,7 +53,7 @@ class _TransactionPageState extends State<JobPage> {
     if (jobs.isEmpty) {
       return const Center(
         child: Text(
-          'Pas d\'offre pour l\'instant',
+          'Il n\'y a pas d\'offre pour l\'instant',
           style: TextStyle(fontSize: 24),
         ),
       );
@@ -89,7 +93,7 @@ class _TransactionPageState extends State<JobPage> {
         subtitle: Text(
           job.comment.toString(),
         ),
-        trailing: Text(job.net.toString() + " EUR"),
+        trailing: Text(job.net.toString() + " €"),
         children: [
           Row(
             children: [
@@ -134,7 +138,7 @@ class _TransactionPageState extends State<JobPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          job.brut.toString() + " EUR",
+                          job.brut.toString() + " €",
                           style: const TextStyle(fontSize: 18),
                         )
                       ],
@@ -143,7 +147,7 @@ class _TransactionPageState extends State<JobPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          job.net.toString() + " EUR",
+                          job.net.toString() + " €",
                           style: const TextStyle(fontSize: 18),
                         )
                       ],
@@ -172,7 +176,7 @@ class _TransactionPageState extends State<JobPage> {
         children: [
           Expanded(
             child: TextButton.icon(
-              label: const Text('Editer'),
+              label: const Text('Modifier'),
               icon: const Icon(Icons.edit),
               onPressed: () => Navigator.of(context, rootNavigator: true).push(
                 MaterialPageRoute(
@@ -187,7 +191,7 @@ class _TransactionPageState extends State<JobPage> {
           ),
           Expanded(
             child: TextButton.icon(
-              label: const Text('Suprimer'),
+              label: const Text('Retirer'),
               icon: const Icon(Icons.delete),
               onPressed: () => Navigator.of(context, rootNavigator: true).push(
                 MaterialPageRoute(
