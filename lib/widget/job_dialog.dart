@@ -103,7 +103,7 @@ class _JobDialogState extends State<JobDialog> {
   @override
   Widget build(BuildContext context) {
     final isEditing = widget.job != null;
-    final title = isEditing ? 'Editer une offre' : 'Ajouter une offre';
+    final title = isEditing ? 'Modifier une offre (Aucun champ ne peut être vide)' : 'Ajouter une offre (Tous les champs sont obligatoires)';
 
     return AlertDialog(
       title: Text(title),
@@ -143,7 +143,7 @@ class _JobDialogState extends State<JobDialog> {
         ),
         maxLines: 2,
         validator: (name) =>
-            name != null && name.isEmpty ? 'Saisir un nom' : null,
+            name != null && name.isEmpty ? 'Ce champ est obligatoire' : null,
       );
 
   Widget buildBrut() => TextFormField(
@@ -151,11 +151,11 @@ class _JobDialogState extends State<JobDialog> {
           border: OutlineInputBorder(),
             icon: Icon(Icons.euro),
             labelText: 'Mensuel Brut',
-            suffixText: "EUR"
+            suffixText: "€"
         ),
         keyboardType: TextInputType.number,
         validator: (amount) => amount != null && double.tryParse(amount) == null
-            ? 'Saisir un nombre valide'
+            ? 'Ce nombre n\' est pas valide'
             : null,
         onChanged: (text){
           onBrutChange();
@@ -168,11 +168,11 @@ class _JobDialogState extends State<JobDialog> {
           border: OutlineInputBorder(),
           icon: Icon(Icons.euro),
           labelText: 'Mensuel Net',
-          suffixText: "EUR"
+          suffixText: "€"
         ),
         keyboardType: TextInputType.number,
         validator: (amount) => amount != null && double.tryParse(amount) == null
-            ? 'Saisir un nombre valide'
+            ? 'Ce nombre n\' est pas valide'
             : null,
         onChanged: (text){
           onNetChange();
@@ -220,7 +220,7 @@ class _JobDialogState extends State<JobDialog> {
     maxLines: 5,
     keyboardType: TextInputType.multiline,
     validator: (name) =>
-    name != null && name.isEmpty ? 'Saisir un commentaire' : null,
+    name != null && name.isEmpty ? 'Ce champ est obligatoire' : null,
   );
 
   Widget buildCancelButton(BuildContext context) => TextButton(
