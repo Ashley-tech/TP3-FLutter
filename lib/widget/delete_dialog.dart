@@ -16,7 +16,7 @@ class DeleteDialog extends StatefulWidget {
   _DeleteDialogState createState() => _DeleteDialogState();
 }
 
-const title = "Supprimer";
+const title = "Retirer";
 
 class _DeleteDialogState extends State<DeleteDialog> {
   final formKey = GlobalKey<FormState>();
@@ -35,7 +35,7 @@ class _DeleteDialogState extends State<DeleteDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text(title),
-      content: Text("êtes-vous sûr de vouloir supprimer"),
+      content: Text("Êtes-vous sûr de vouloir retirer cette offre ?"),
       actions: [
         buildCancelButton(context),
         buildDeleteButton(context),
@@ -50,7 +50,7 @@ class _DeleteDialogState extends State<DeleteDialog> {
 
   Widget buildDeleteButton(BuildContext context) {
     return TextButton(
-        child: Text("Supprimer"),
+        child: Text("Retirer"),
         onPressed: () async {
           widget.onClickedDelete();
           Navigator.of(context).pop();
